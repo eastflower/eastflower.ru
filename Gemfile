@@ -14,7 +14,8 @@ gem 'thinking-sphinx', '~> 3.1', '>= 3.1.4'
 gem 'pg_search'
 
 # WEB SERVER
-gem 'unicorn-rails'
+gem 'puma'
+# gem 'unicorn-rails'
 
 # CONFIGURATION
 gem 'config', '1.0.0'
