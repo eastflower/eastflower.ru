@@ -1,0 +1,66 @@
+# IGNORE APP THEME
+APP.NAME
+
+config/_CONFIGS/development/**/*
+config/_CONFIGS/production/**/*
+config/settings/*.yml
+
+# IGNORE APP THEME database configs
+
+# IGNORE BUNDLER CONFIG.
+/.bundle
+
+# IGNORE THE DEFAULT SQLITE DATABASE.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# IGNORE ALL LOG FILES AND TEMP FILES.
+/log/*
+!/log/.keep
+/tmp
+
+public/uploads
+public/assets
+
+# OS FILES
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+
+####################################
+# LOCAL CONFIGS
+####################################
+
+# COMMON
+unicorn.rb
+schedule.rb
+config/database.yml
+config/CONFIGS/**/*.yml
+
+# CONFIG FILES
+
+.rvmrc
+.ruby-gemset
+.ruby-version
+
+# REDIS
+
+db/REDIS/
+config/initializers/_REDIS.rb
+
+# => SIDEKIQ
+
+config/initializers/_SIDEKIQ.rb
+
+# SPHINX
+
+db/SPHINX/
+config/sphinx.conf
+config/*.sphinx.conf
+config/searchd.config
+config/thinking_sphinx.yml
+config/DEV_ENV_MAC/searchd.config

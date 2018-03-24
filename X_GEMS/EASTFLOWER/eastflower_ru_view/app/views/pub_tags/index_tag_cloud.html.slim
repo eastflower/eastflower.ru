@@ -1,0 +1,10 @@
+.app--header-2.fs18.tac.mb20.upcase Теги
+.tac.mb20= image_tag '/eastflower.ru/venzel_2.png'
+
+.ml30.mr30.mb30.tac
+  - tags = PubCategoryRel.tags_top(50)
+  - tags = pub_tags_cloud tags, %w[fs16 fs18 fs20 fs24] do |rel, klass|
+    - link_to rel.category.title, rel.category, class: "app--link-0 #{ klass } mr10 ml10 lh130", title: "записей: #{ rel.category_count }"
+  = raw tags.shuffle.join(' ')
+
+  .mt20.mb20.tac.fs18= link_to 'Все теги сайта', pub_tags_path, class: 'app--link-1 u'

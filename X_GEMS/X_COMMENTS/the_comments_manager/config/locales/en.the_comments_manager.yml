@@ -1,0 +1,27 @@
+en:
+  # the_comments:
+  #   management: Management Panel
+
+  #   written_by_me: Written by me
+  #   for_my_posts:  For my Posts
+  #   in_system: In System
+
+  #   published_comments: Published Comments
+  #   draft_comments:     Draft Comments
+  #   deleted_comments:   Deleted Comments
+  #   spam_comments:      Spam Comments
+
+  #   edit:       Edit
+  #   update:     Update
+
+  #   to_draft:     to Draft
+  #   to_spam:      to Spam
+  #   to_deleted:   to Deleted
+  #   to_published: to Published
+
+  #   additional_info: Info
+
+  #   nav:
+  #     to_root: Home
+  #     header:  Navigation
+  #     all_incoming: All Incoming

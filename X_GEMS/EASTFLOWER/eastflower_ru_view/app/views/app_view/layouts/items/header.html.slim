@@ -1,0 +1,47 @@
+.ma.min-body-w.max-body-w
+  .w100p.posrel
+
+    / HEADER HOLDER
+    .app-header--holder.ptz--table.w100p
+      .ptz--td.vat.tac
+        .mt60
+          = link_to '/', title: 'Елена Цой. EastFlower.ru' do
+            = image_tag '/eastflower.ru/elena_tsoy.png', title: 'Елена Цой. EastFlower.ru', alt: 'Елена Цой. EastFlower.ru'
+
+        .mb15= image_tag '/eastflower.ru/venzel_1.png'
+        .app--txt-0.fs28.fw300 Кулинарные заметки
+
+    / HEADER ITEMS
+    .app-header--teapot.posabs
+    .app-header--cake-and-flowers.posabs
+    .app-header--search-line.posabs
+
+      = form_tag pubs_search_path, method: :get, enforce_utf8: false do
+        .br-off
+          = text_field_tag :bq, @bq,  class: 'ptz--size-16 w300 app-header--search-line-input js--blog-search--bq-input', placeholder: "Поиск по сайту"
+
+    .app-header--sub-header.posabs.w100p.ptz--table
+      .ptz--td.pl20.w100p.fs22.fw300.vam
+        = link_to 'Каталог рецептов', hub_path(:recipes), class: 'app--link-0'
+        span.mr10.ml10.app--txt-1 |
+        = link_to 'Каталог статей', hub_path(:posts), class: 'app--link-0'
+        span.mr10.ml10.app--txt-1 |
+        = link_to 'О блоге', post_path(:about), class: 'app--link-0'
+
+      .ptz--td.pr20.vam.fs22.fw300.br-off
+        - if current_user
+          - if current_user.draft_comcoms_count > 0
+            = link_to [:draft, :comments] do
+              span.app--blink-1
+                i.fa.fa-comment-o
+                '
+                = current_user.draft_comcoms_count
+            span.mr10.ml10.app--txt-1 |
+
+          span= link_to "Кабинет", cabinet_path, class: 'app--link-0'
+          span.mr10.ml10.app--txt-1 |
+          span= link_to "Выход", destroy_user_session_path, method: :delete, class: 'app--link-0'
+        - else
+          span= link_to 'Вход', new_user_session_path, class: 'app--link-0'
+          span.mr10.ml10.app--txt-1 |
+          span= link_to 'Регистрация', new_user_registration_path, class: 'app--link-0'

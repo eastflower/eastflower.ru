@@ -1,0 +1,15 @@
+- content_for :title do
+  = @pub.title
+
+= render template: 'app_view/layouts/items/header_footer'
+
+= render template: 'common/admin/controls/pub'
+
+- if @pub.editor_type == 'ptz_editor'
+  = render template: 'rails_blog/pubs/colored_code_css'
+
+.ptz--theme-0
+  .ptz--typo-0
+    h1= @pub.title
+    .mb10= raw @pub.intro
+    .mb10= raw @pub.content

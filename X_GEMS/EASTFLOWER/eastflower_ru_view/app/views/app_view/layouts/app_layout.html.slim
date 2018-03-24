@@ -1,0 +1,87 @@
+doctype html
+html.h100p.w100p(lang='ru')
+  head(data-log-js=Rails.env.development?)
+    meta(charset='utf-8')
+    title= content_for?(:title) ? yield(:title) : t(:title, scope: [:app, :layout])
+
+    - if content_for? :layout_assets
+      = yield :layout_assets
+    - else
+      = stylesheet_link_tag    :rails_blog_frontend, media: :all, 'data-turbolinks-track' => true
+      = javascript_include_tag :rails_blog_frontend, 'data-turbolinks-track' => true
+
+    meta(http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1')
+    meta#env_token(name='env_token' content=Rails.env.to_s)
+    = favicon_link_tag image_url('/favicon.ico')
+
+    = csrf_meta_tags
+
+    = yield :js
+    = yield :css
+    = yield :meta_tags
+
+  body.h100p.w100p#top
+
+    / TLAYOUT
+    .ptz--table.w100p.h100p
+
+      / HEADER
+      - if content_for? :header
+        .ptz--tr.w100p
+          .ptz--td
+            header= yield :header
+
+      / MAIN
+      .ptz--tr.h100p
+        .ptz--td.h100p
+
+          / TCOLUMNER
+          .ma.ptz--table.w100p.h100p.min-body-w.max-body-w
+            .ptz--tr.h100p
+
+              / LEFT ASIDE
+              - if content_for? :left_sidebar
+                .ptz--td.h100p
+                  aside= yield :left_sidebar
+
+              / NESTED MAIN
+              .ptz--td.h100p
+                / TCONETNT
+                .ptz--table.w100p.h100p
+                  .ptz--tr.w100p
+                    .ptz--td.h100p
+                      - if content_for? :breadcrumbs
+                        = yield :breadcrumbs
+
+                      = render partial: 'notifications/flash', locals: { format: :json }
+                      main= yield
+
+                  - if content_for? :paginator
+                    .ptz--tr
+                      .ptz--td
+                        = yield :paginator
+
+              / RIGHT ASIDE
+              - if content_for? :right_sidebar
+                .ptz--td.h100p
+                  aside= yield :right_sidebar
+
+      / FOOTER
+      - if content_for? :footer
+        .ptz--tr.w100p
+          .ptz--td
+            footer= yield :footer
+
+    noindex
+      #to_top(style='display:none')
+        = link_to raw('&#9650;'), '#top', rel: :nofollow
+
+    = yield :crop_tool
+    = yield :editor
+
+  = yield :css_addons
+  = yield :js_addons
+
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Anonymous+Pro&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css')
+  link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'   rel='stylesheet' type='text/css')

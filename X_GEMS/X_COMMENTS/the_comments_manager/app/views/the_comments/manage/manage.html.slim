@@ -1,0 +1,23 @@
+= render template: 'app_view/layouts/items/header_footer'
+= render template: 'rails_blog/pubs/colored_code_css'
+
+- content_for :title do
+  = t "the_comments.management"
+
+- content_for :left_sidebar do
+  = render partial: 'the_comments/manage/sidebar/sidebar'
+
+.app--div-0.mt20.mb20.w800
+  .m20.ptz--theme-0
+    = render template: 'common/paginator', locals: { items: @comments }
+
+  .m20
+    - if @comments.blank?
+      .fs18= t 'the_comments.no_comments'
+
+    .comments.js--comments
+      - @comments.each do |comment|
+        = render partial: 'the_comments/manage/comment/comment', locals: { comment: comment }
+
+  .m20.ptz--theme-0
+    = render template: 'common/paginator', locals: { items: @comments }

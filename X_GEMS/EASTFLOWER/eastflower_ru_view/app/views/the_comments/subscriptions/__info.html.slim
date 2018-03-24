@@ -1,0 +1,57 @@
+- content_for :title do
+  | Управление подписками
+
+= render template: 'app_view/layouts/items/header_footer'
+= render template: 'rails_blog/pubs/colored_code_css'
+
+.app--div-0.mt20.mb20.fs16
+  .m20
+    .fs25.mb80 Информация о подписках
+
+    - if @type == 'email'
+      .mb30.b.u= @email
+
+    - if !(%w[ user email all ].include? @type)
+      .fs25.mt100.mb100 Ошибка запроса
+    - else
+      .mb50
+        | Количество комментариев от которых вы были отписаны:
+        '
+        span.b= @subs_count
+
+      .mb50
+        | Общее количество активных подписок на комментарии:
+        '
+        span.b= @total_active_subscriptions
+
+      .mb100
+        | Общее количество активных подписок на публикации:
+        '
+        span.b= @commentable_active_subscriptions
+
+      .fs25.mb40 Управление подписками на комментарии
+
+      - if @comment
+        .mb40= link_to @comment.commentable.title, @comment.commentable, target: :_blank
+
+        .app--div-0.mb80
+          .m30
+            = raw @comment.content
+
+      - if @type == 'user'
+        - if @comment
+          - url_data = [ 'user', @comment.id, @user.id ].map{|i| EncryptorHelper.crypt(i) }
+
+          p= link_to "Unsub comment",     unsubscribe_comment_path(*url_data)
+          p= link_to "Unsub commentable", unsubscribe_commentable_path(*url_data)
+
+        p= link_to "Unsub all",         unsubscribe_all_path(EncryptorHelper.crypt('user'), EncryptorHelper.crypt(@user.id))
+
+      - if @type == 'email'
+        - if @comment
+          - url_data = [ 'email', @comment.id, @email ].map{|i| EncryptorHelper.crypt(i) }
+
+          .mb20= link_to "Отписаться от комментария",     unsubscribe_comment_path(*url_data)
+          .mb20= link_to "Отписаться от поста", unsubscribe_commentable_path(*url_data)
+
+        .mb20.b= link_to "Отписаться от всего", unsubscribe_all_path(EncryptorHelper.crypt('email'), EncryptorHelper.crypt(@email))

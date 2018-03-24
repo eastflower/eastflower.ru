@@ -1,0 +1,23 @@
+= stylesheet_link_tag 'mailers/app_layout'
+
+.app-mailer-layout--bg
+  .ma.w800.p40
+    table.ma.w100p.app-mailer-layout--table.fs16.ffa
+      tr
+        td
+          .app-mailer-layout--header.tac.fs20
+            = mailer_image_tag('letter-header.jpg')
+      tr
+        td
+          .m20.mb40.b.tac.fs16= yield :title
+          .app-mailer-layout--body.p20
+            = yield
+      tr
+        td
+          .app-mailer-layout--footer.p20.tac
+            .fs13
+              | &copy;
+              '
+              | Eastflower.ru &mdash;
+              '
+              = Time.now.year

@@ -1,0 +1,31 @@
+= render template: 'rails_blog/pubs/colored_code_css'
+= yield :css_addons
+css:
+  .highlighttable, .highlighttable pre {
+  font-size: 13px !important;
+  line-height: 150% !important;
+  font-family: monospace !important;
+  }
+
+= content_for :title do
+  | Новый комментарий
+
+.mb20
+  | Был оставлен комментарий к посту
+  '
+  = link_to @commentable.title, @commentable, class: 'b'
+
+hr
+
+.mb20
+  = raw @comment.content
+
+hr
+
+.mb10= link_to "Управлять подпиской на комментарии", "#"
+
+/ - url_data = [ 'email', @comment.id, @email ].map{|i| EncryptorHelper.crypt(i) }
+/ - all_data = [ 'email', @email ].map{|i| EncryptorHelper.crypt(i) }
+/ .mb10= link_to "Отписатья от комментария", unsubscribe_comment_url(*url_data), target: :_blank
+/ .mb10= link_to "Отписаться от поста",      unsubscribe_commentable_url(*url_data), target: :_blank
+/ .mb10= link_to "Отписаться от всего",      unsubscribe_all_url(*all_data), target: :_blank

@@ -1,0 +1,28 @@
+= form_for comment, remote: true, html: { role: :form } do |f|
+  .ptz--table.ptz--table-0.w100p.fs15
+    .ptz--tbody
+      .ptz--tr
+        .ptz--td.p10
+          .b= t('the_comments.commentable')
+        .ptz--td.p10.w100p
+          span.mr15.u
+            = comment.commentable_type
+            |:
+          = link_to comment.commentable_title, comment.commentable_url
+          '
+          | (#{ comment.try(:commentable_state) })
+      .ptz--tr
+        .ptz--td.p10
+          b= t('the_comments.title')
+        .ptz--td.p10= f.text_field :title, class: "w100p ptz--input ptz--size-14"
+      .ptz--tr
+        .ptz--td.p10
+          b= t('the_comments.contacts')
+        .ptz--td.p10= f.text_field :contacts, class: "w100p ptz--input ptz--size-14"
+      .ptz--tr
+        .ptz--td.p10
+          b= t('the_comments.content')
+        .ptz--td.p10= f.text_area :raw_content, class: "w100p ptz--textarea ptz--size-14", rows: 7
+      .ptz--tr
+        .ptz--td.p10
+        .ptz--td.p10= f.submit t('the_comments.update'), class: "ptz--btn ptz--size-18"

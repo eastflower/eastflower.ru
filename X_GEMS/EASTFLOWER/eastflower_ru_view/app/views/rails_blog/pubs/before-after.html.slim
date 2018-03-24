@@ -1,0 +1,23 @@
+- if @prev_pub || @prev_pub
+  .pubs-before-after--holder.ptz--table.w100p
+    .ptz--td.w50p.p10
+      - if pub = @prev_pub
+        - pub_path = polymorphic_path(pub)
+
+        .ptz--table.w100p
+          .ptz--td.pr20
+            = link_to pub_path, id: :prev_pub do
+              = image_tag pub.main_image_url(:v100x100), class: 'pubs-before-after--img'
+          .ptz--td.w100p.fs18.lh130.vam.tal
+            = link_to pub.title, pub_path, class: 'app--link-1'
+
+    .ptz--td.tar.p10
+      - if pub = @next_pub
+        - pub_path = polymorphic_path(pub)
+
+        .ptz--table.w100p
+          .ptz--td.w100p.fs18.lh130.vam.tar
+            = link_to pub.title, pub_path, class: 'app--link-1'
+          .ptz--td.pl20
+            = link_to pub_path, id: :next_pub do
+              = image_tag pub.main_image_url(:v100x100), class: 'pubs-before-after--img'

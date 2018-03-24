@@ -1,0 +1,13 @@
+- content_for :title do
+  | Управлять публикациями
+
+= render template: 'app_view/layouts/items/header_footer'
+
+.ptz--theme-0.m20
+  span.mr20= link_to 'Создать новую статью',   new_post_path, class: 'ptz--btn ptz--size-14'
+
+.m20
+  .fs22.mb15 Все публикации
+  = render template: 'rails_blog/pubs/manager_table', locals: { pubs:  @pub_items }
+  .ptz--theme-0
+    = render template: 'common/paginator',   locals: { items: @pub_items }

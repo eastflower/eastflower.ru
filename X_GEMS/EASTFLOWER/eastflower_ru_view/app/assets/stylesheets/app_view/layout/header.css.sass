@@ -1,0 +1,63 @@
+header
+  background: image_url("/eastflower.ru/desks_bg.jpg")
+  border-bottom: 1px solid #707070
+  box-shadow: 0px 2px 0px #cdcdcd
+
+.app-header
+  &--holder
+    height: 290px
+
+  &--teapot
+    left: 30px
+    bottom: 10px
+
+    width:  350px
+    height: 220px
+
+    background: image-url("/eastflower.ru/teapot.png") no-repeat scroll 0 0
+
+  &--cake-and-flowers
+    right:  20px
+    bottom: 120px
+
+    width:  200px
+    height: 100px
+
+    background: image-url("/eastflower.ru/cake_and_flowers.png") no-repeat scroll 0 0
+
+  &--search-line
+    right:  20px
+    bottom: 80px
+
+  &--search-line-input
+    border-radius: 10px
+    border: 3px solid #c2c2c2
+
+  &--sub-header
+    left:   0
+    bottom: -36px
+
+    height: 75px
+    background: #e1e1e1
+    border-radius: 20px
+
+    &:before, &:after
+      z-index: -1
+      content: ''
+
+      position: absolute
+
+      left:   30px
+      bottom: 7px
+
+      width: 430px
+      height: 0.1px
+      background: transparent
+
+      box-shadow: 0 0 10px 3px #000
+      transform: rotate(-1.5deg)
+
+    &:after
+      transform: rotate(1.5deg)
+      right: 30px
+      left: auto

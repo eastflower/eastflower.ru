@@ -1,0 +1,7 @@
+.mb20.fs16
+  = current_user.username
+.mb20
+  .mb5.fs14= t('the_comments.form.content')
+  = f.text_area :raw_content, class: 'ptz--textarea ptz--size-16 w100p', rows: 10
+
+= render partial: 'the_comments/tree/form.hidden_fields', locals: { f: f, commentable: commentable }

@@ -1,0 +1,24 @@
+- if current_user.comments_admin?
+  .mb40
+    .fs15.b.mb25.br-off= t 'the_comments.in_system'
+
+    .fs13
+      .mb10.br-off
+        = link_to t('the_comments.published_comments_html'), [:total_published, :comments]
+        span.js--comments--all-published-count
+          = Comment.with_state(:published).count
+
+      .mb10.br-off
+        = link_to t('the_comments.draft_comments_html'), [:total_draft, :comments]
+        span.js--comments--all-draft-count
+          = Comment.with_state(:draft).count
+
+      .mb10.br-off
+        = link_to t('the_comments.deleted_comments_html'), [:total_deleted, :comments]
+        span.js--comments--all-deleted-count
+          = Comment.with_state(:deleted).count
+
+      .mb10.br-off
+        = link_to t('the_comments.spam_comments_html'), [:total_spam, :comments]
+        span.js--comments--all-spam-count
+          = Comment.where(spam: true).count

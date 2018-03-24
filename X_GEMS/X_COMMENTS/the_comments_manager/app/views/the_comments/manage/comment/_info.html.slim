@@ -1,0 +1,13 @@
+.ptz--table.ptz--table-0.w100p.fs15.lh130
+  .ptz--thead
+    .ptz--tr
+      .ptz--th.p10.w25p На странице до отправки комментария (сек):
+      .ptz--th.p10.w25p IP:
+      .ptz--th.p10.w25p Устройство:
+      .ptz--th.p10 Источник:
+  .ptz--tbody
+    .ptz--tr
+      .ptz--td.p10= comment.tolerance_time || :none
+      .ptz--td.p10= comment.ip
+      .ptz--td.p10= comment.user_agent
+      .ptz--td.p10= comment.referer

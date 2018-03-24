@@ -1,0 +1,26 @@
+.w100p.posrel
+  / FOOTER ITEMS
+  .app-footer--mint-line.w100p.posabs
+  .app-footer--flowers.posabs
+
+  .ma.min-body-w.max-body-w
+    / FOOTER
+    .app-footer--holder.ptz--table.w100p
+      .ptz--td.pt50
+        .fs20.fw300.app--txt-2.br-off &copy; #{ Time.now.year }, Блог Елены Цой
+
+      .ptz--td.pt50.fw300.fs18
+        .mb25= link_to 'Каталог рецептов', hub_path(:recipes), class: 'app--link-1'
+        .mb25= link_to 'Каталог статей',   hub_path(:posts),   class: 'app--link-1'
+        .mb25= link_to 'О блоге',          post_path(:about),  class: 'app--link-1'
+
+      .ptz--td.pt50.fw300.fs18
+        .mb25= link_to 'Пользователи', users_path, class: 'app--link-1'
+
+        - if Rails.env.production?
+          = render(template: "app_view/layouts/items/yandex.metrika.counter.html").noendl.html_safe
+
+      .ptz--td.pt50.tar
+        .mb20.fs14
+          .app--txt-0.mb5 Разработка и поддержка сайта:
+          = link_to 'Открытая Кухня Анны Нечаевой', 'https://open-cook.ru', class: 'app--link-1 br-off'

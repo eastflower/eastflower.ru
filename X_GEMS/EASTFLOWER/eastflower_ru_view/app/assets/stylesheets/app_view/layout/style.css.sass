@@ -1,0 +1,107 @@
+.min-body-w
+  min-width: 1200px
+
+.max-body-w
+  max-width: 1200px
+
+.fw300
+  font-weight: 300 !important
+
+.pt7
+  padding-top: 7px !important
+
+main, aside
+  margin-top: 70px
+
+.app
+  &--txt-0
+    color: #363636
+
+  &--txt-1
+    color: #741a19
+
+  &--txt-2
+    color: #464646
+
+  &--link-0
+    color: #741a19
+
+    &:hover
+      color: #1ca17f
+      text-decoration: underline
+
+  &--link-1
+    color: #1e6548
+
+    &:hover
+      color: #741a19
+
+  &--link-2
+    color: #741a19
+    text-decoration: underline
+
+    &:hover
+      color: #1ca17f
+
+  &--link-3
+    color: #555555
+
+    &:hover
+      color: #741a19
+
+  &--header-0
+    color: #1e6548
+    text-align: center
+    position: relative
+    z-index: 1
+
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      top: 50%
+      left: 0
+      width: 100%
+      border-top: 2px dashed #1e6548
+      z-index: -1
+
+  &--header-0--text
+    background: white
+    padding: 0 10px
+
+  &--header-1
+    color: #741a19
+
+  &--header-2
+    color: #1e6548
+
+  &--header-3
+    color: #741a19
+    text-decoration: underline
+
+  &--div-1
+    background: #e9f6fd
+    border-radius: 3px
+    border: 1px solid #a8ccdf
+
+.recipe-of-day
+  &--title
+    text-align: center
+    position: relative
+    z-index: 1
+
+    &:before
+      width: 100%
+      content: ''
+      display: block
+      position: absolute
+      left: 0
+      top: 50%
+      border: 1px dashed #e29097
+      z-index: -1
+
+  &--title-img
+    display: inline-block
+    width: 140px
+    height: 115px
+    background: #fff image-url("/eastflower.ru/recipe_of_day.png") no-repeat scroll center center

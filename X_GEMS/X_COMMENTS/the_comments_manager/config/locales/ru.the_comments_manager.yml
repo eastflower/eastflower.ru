@@ -1,0 +1,37 @@
+ru:
+  the_comments:
+    commentable: Оставлен к
+    title:    Тема/Имя
+    contacts: Контакты
+    content:  Содержимое
+    cancel:   Отмена
+
+    management: Панель управления
+
+    written_by_me: Написанные мной
+    for_my_posts:  К моим Постам
+    in_system:     В системе
+
+    no_comments: Нет комментариев
+
+    published_comments_html: "Опубликованные &mdash; "
+    draft_comments_html:     "Черновики &mdash; "
+    deleted_comments_html:   "Удаленные &mdash; "
+    spam_comments_html:      "Спам &mdash; "
+
+    edit:       Правка
+    update:     Обновить
+    delete_confirm: "Хотите удалить комментарий?"
+
+    to_draft:     В Черновики
+    to_spam:      В Спам
+    to_deleted:   В Удаленные
+    to_published: В Опубликованные
+
+    additional_info: Прочее
+
+    nav:
+      to_root: На главную
+      header:  Навигация
+      all_incoming: Все входящие
+

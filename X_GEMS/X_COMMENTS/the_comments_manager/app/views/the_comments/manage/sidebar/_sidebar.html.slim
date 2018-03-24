@@ -1,0 +1,8 @@
+.app--div-0.mt20.mb20.mr20
+  .m20
+    / = render partial: ('the_comments/manage/sidebar/backlink')
+
+    = render partial: ('the_comments/manage/sidebar/user')
+
+    - if current_user.comments_admin?
+      = render partial: ('the_comments/manage/sidebar/admin')

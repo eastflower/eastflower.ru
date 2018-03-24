@@ -1,0 +1,21 @@
+- if pubs.blank?
+  .ptz--div-0.fs18.p20 Здесь ничего нет
+- else
+  - pubs.each do |pub_item|
+    - item = pub_item.try(:item) || pub_item
+
+    .pubs-list-0--item
+      = link_to item, class: 'pubs-list-0--img-link mb10' do
+        = image_tag item.main_image_url(:v500x500), class: 'pubs-list-0--img'
+
+      .pubs-list-0--pub-date.fw300.i.fs16.mb15
+        - date = item.created_at || item.published_at
+        = raw I18n.l(date, format: raw("%-d %B %Y %H:%M"))
+
+      = link_to item, class: 'pubs-list-0--title mb10 iblock' do
+        = item.title
+
+      .pubs-list-0--intro.fs14.lh130.mb20
+        = Sanitize.fragment(item.intro, {}).truncate(200, omission: '...')
+
+      = link_to 'Подробнее »'.html_safe, item, class: 'pubs-list-0--more'

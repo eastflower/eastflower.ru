@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    attributes:
+      comment:
+        raw_content: Комментарий
+    errors:
+      models:
+        comment:
+          attributes:
+            raw_content:
+              blank: 'не может быть пустым'
+
+  the_comments:
+    guest_name: Гость
+
+    new: Новый Комментаий
+    reply: Ответить
+    subscribe_to_thread: Подписаться на тему
+    waiting_for_moderation: Ожидает модерации
+
+    form:
+      title:    Заголовок
+      contacts: Контакты
+      content:  Сообщение *
+      create:   Создать
+      thank_you: "Спасибо!"

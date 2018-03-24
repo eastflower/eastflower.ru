@@ -1,0 +1,30 @@
+- content_for :title do
+  | APP: Кабинет Администратора
+
+= render template: 'layouts/items/header_footer'
+
+.m20.ptz--theme-0
+  - hubs_count     = Hub.for_manage.count
+  - posts_count    = Post.for_manage.count
+  - pub_tags_count = PubTag.for_manage.count
+  - com_count      = Comment.for_manage.count
+
+  .fs20.mt40.mb40 Кабинет Администратора
+
+  table.ptz--table-0.w100p
+    thead.tal.fs18
+      tr
+        th.p25 Мой Профиль
+        th.p25 Контент
+        th.p25 Комментарии
+    tbody.tal
+      tr
+        td.p25
+          .mb15= link_to "Моя страница",  @user,            class: 'ptz--btn ptz--size-14'
+          .mb15= link_to "Редактировать", [ :edit, @user ], class: 'ptz--btn ptz--size-14'
+        td.p25
+          .mb20 = link_to raw("Разделы &mdash; #{ hubs_count }"),   manage_hubs_path,     class: 'ptz--btn ptz--size-14'
+          .mb20 = link_to raw("Посты &mdash; #{ posts_count }"),    manage_posts_path,    class: 'ptz--btn ptz--size-14'
+          .mb20 = link_to raw("Теги &mdash; #{ pub_tags_count }"),  manage_pub_tags_path, class: 'ptz--btn ptz--size-14'
+        td.p25
+          .mb20 = link_to raw("Комментарии &mdash; #{ com_count }"), manage_comments_path, class: 'ptz--btn ptz--size-14'

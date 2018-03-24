@@ -1,0 +1,29 @@
+- hidden = "display:none"
+.mt10.mb10.clearfix
+  = link_to '#', class: "ptz--btn ptz--size-12 mr10 js--comments--comment-edit" do
+    = t('the_comments.edit')
+
+  = link_to '#', class: "ptz--btn ptz--size-12 mr10 js--comments--comment-edit", style: "display:none" do
+    = t('the_comments.cancel')
+
+  - unless to_hide = comment.published? ? hidden : nil
+    - opts = { remote: true, style: to_hide, method: :post }
+    = link_to [:to_published, comment], opts.merge(class: "ptz--btn ptz--size-12 mr10 js--comments--to-published") do
+      = t('the_comments.to_published')
+
+  - unless to_hide = comment.draft? ? hidden : nil
+    - opts = { remote: true, style: to_hide, method: :post }
+    = link_to [:to_draft, comment], opts.merge(class: "ptz--btn ptz--size-12 mr10 js--comments--to-draft" ) do
+      = t('the_comments.to_draft')
+
+  - opts = { remote: true, method: :post}
+  = link_to [:to_spam, comment], opts.merge(class: "ptz--btn ptz--size-12 mr10 js--comments--to-spam") do
+    = t('the_comments.to_spam')
+
+  - unless to_hide = comment.deleted? ? hidden : nil
+    - opts = { remote: true, style: to_hide, method: :delete, data: { confirm: t('the_comments.delete_confirm') } }
+    = link_to [:to_deleted, comment], opts.merge(class: "ptz--btn ptz--size-12 mr10 js--comments--to-deleted") do
+      = t('the_comments.to_deleted')
+
+  .pull-right
+    = link_to t('the_comments.additional_info'), "#", class: "ptz--btn ptz--size-12 js--comments--comment-info-btn"

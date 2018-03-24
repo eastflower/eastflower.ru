@@ -1,0 +1,104 @@
+- content_for :title do
+  = @pub.title
+
+= render template: 'app_view/layouts/items/header_footer'
+
+- if @pub.editor_type == 'ptz_editor'
+  = render template: 'rails_blog/pubs/colored_code_css'
+
+= render template: 'meta_data/pubs/article', locals: { article: @pub }
+
+- content_for :left_sidebar do
+
+  .mr20.w300
+    .mb60
+      .app--header-1.fs18.tac.mb20.upcase Мои Каталоги
+      .tac.mb35= image_tag '/eastflower.ru/venzel_2.png'
+
+      .ml90
+        - rec_name = :recipes
+        - if recipes_hub = Hub.friendly_first(rec_name)
+          - recipes_hub.children.published.each_with_index do |hub, index|
+            .mb40.fs18= link_to hub.title, hub, class: "hub-menu--item hub-menu--item-#{ index.next }"
+
+    .mb60
+      .app--header-2.fs18.tac.mb20.upcase Теги
+      .tac.mb20= image_tag '/eastflower.ru/venzel_2.png'
+
+      .mb20.tac
+        - tags = PubCategoryRel.tags_top(10)
+        - tags = pub_tags_cloud tags, %w[ fs18 fs22 fs24 fs28  ] do |rel, klass|
+          - link_to rel.category.title, rel.category, class: "app--link-0 #{ klass } mr10 ml10 lh130", title: "записей: #{ rel.category_count }"
+        = raw tags.shuffle.join(' ')
+        .mt20.mb20.tac.fs18= link_to 'Все теги сайта', pub_tags_path, class: 'app--link-1 u'
+
+.app--div-0.mt20.mb10.w850
+  - if (admin_btns = render(template: 'common/admin/controls/pub')).present?
+    .mb15= admin_btns
+
+  .mb20= render template: 'pubs/before-after'
+
+  h1.fs24.mt25.mb15.app--header-3= @pub.title
+
+  .lh180.mb15
+    - _hubs = @pub.hubs.published.map do |hub|
+      - link_to hub.title, hub, class: 'fs12 crumbs-0--link'
+    - _hubs.unshift(link_to 'Главная', root_path, class: 'fs12 crumbs-0--link')
+    = raw _hubs.join "<span class='mr5 ml5 fs13 crumbs-0--txt'>/</span>"
+
+  .mb20.lh200
+    - @pub.pub_tags.published.each do |pub_tag|
+      = link_to pub_tag, class: 'fs14 mr10 app--link-1 br-off' do
+        span.fa.fa-tag
+        '
+        = pub_tag.title
+      '
+
+  .ptz--theme-0
+    .ptz--typo-0
+      - if @pub.intro.present?
+        .solid-0= raw @pub.intro
+      - if @pub.content.present?
+       .solid-0.mt15.mb30= raw @pub.content
+
+.w300
+  .ptz--table.app--div-0.mt10.mb30.fs13
+    .ptz--tr
+      .ptz--td.vam.w100p
+        - if @pub.published_at.present?
+          - date = @pub.published_at
+          = raw I18n.l(date, format: raw("%-d %B %Y  &nbsp;&nbsp; %H:%M"))
+
+      .ptz--td.vam.br-off
+        span.app--link-3.mr20.br-off
+          span.mr5.fa.fa-comments-o
+          span(data-role='comments_sum')= @pub.comments_sum
+
+        span.app--link-3.br-off
+          span.mr5.fa.fa-eye
+          = @pub.view_counter
+
+.social-buttons.mb30.p15
+  .social-buttons--title.fs18.mb20
+    i.fa.fa-thumbs-o-up.mr10
+    '
+    | Понравился пост? Мы всегда рады получать Ваши Лайки ;)
+  .w100.ptz--table
+    .ptz--td.pr10.vam= render template: 'shared/social/vk_like', locals: { pub: @pub }
+    .ptz--td.pr50.vam= render template: 'shared/social/fb_like', locals: { pub: @pub }
+    .ptz--td.pr50.vam= render template: 'shared/social/ok_like', locals: { pub: @pub }
+    .ptz--td.pr50.vam= render template: 'shared/social/tw_like', locals: { pub: @pub }
+    .ptz--td.pr50.vam= render template: 'shared/social/pin_btn', locals: { pub: @pub }
+
+.w650
+  - comments_tree = @pub.comments.with_state([:draft, :published]).nested_set
+  .comments@comments
+    ol.comments_tree@comments_tree@tolarance_time_holder data={ comments: { tolarance_time: TheCommentsBase.config.tolerance_time  } }
+      = render partial: 'the_comments/tree/comment', locals: { tree: comments_tree }
+
+    .app--div-0.mb20
+      = render partial: 'the_comments/form', locals: { commentable: @pub }
+
+- if current_user.try(:admin?)
+  javascript:
+    $(function(){ SeoInspector.init() })

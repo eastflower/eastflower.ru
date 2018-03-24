@@ -1,0 +1,55 @@
+- content_for :title do
+  | Елена Цой. EastFlower.ru
+
+= render template: 'app_view/layouts/items/header_footer'
+
+.fs24.app--header-0.fw300.mb30
+  span.app--header-0--text Новые публикации
+
+.pubs-list-0--holder.mb40
+  ruby:
+    @main_hub = Hub.where(slug: :main).published.first
+
+    @pub_items = PubCategoryRel
+      .where(category: @main_hub)
+      .published
+      .includes(:item)
+      .reversed_nested_set
+      .limit(4)
+
+  .tac= render template: 'pubs/list', locals: { pubs: @pub_items }
+
+.tac.fs18.mb35= link_to 'Посмотреть все публикации', Hub.friendly_first(:main), class: 'app--link-2'
+
+.ptz--table.w100p
+  .ptz--tr
+    .ptz--td.w25p.pt7
+
+      .app--header-1.fs18.tac.mb20.upcase Мои Каталоги
+      .tac.mb35= image_tag '/eastflower.ru/venzel_2.png'
+
+      .ml90
+        - rec_name = :recipes
+        - if recipes_hub = Hub.friendly_first(rec_name)
+          - recipes_hub.children.published.each_with_index do |hub, index|
+            .mb40.fs18= link_to hub.title, hub, class: "hub-menu--item hub-menu--item-#{ index.next }"
+
+    .ptz--td
+      .recipe-of-day--title.mb20
+        .recipe-of-day--title-img
+
+      - day_exp_date = (Time.zone.now.end_of_day - Time.zone.now).to_i
+      - cache(:recipe_of_the_day, expires_in: day_exp_date) do
+        = render template: 'pubs/random_of_day'
+
+      .fs20.app--header-0.fw300.mb30
+        span.app--header-0--text.upcase Тема дня
+
+      - day_exp_date = (Time.zone.now.end_of_day - Time.zone.now).to_i
+      - cache(:topic_of_the_day, expires_in: day_exp_date) do
+        = render template: 'pubs/random_of_day'
+
+    .ptz--td.w25p.pt7
+      - day_exp_date = (Time.zone.now.end_of_day - Time.zone.now).to_i
+      - cache(:tags_of_the_day, expires_in: day_exp_date) do
+        = render template: 'pub_tags/index_tag_cloud'

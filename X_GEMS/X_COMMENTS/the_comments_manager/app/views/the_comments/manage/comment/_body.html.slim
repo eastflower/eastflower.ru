@@ -1,0 +1,54 @@
+.ptz--table.ptz--table-0.w100p.fs15
+  .ptz--tbody
+    - if user = comment.user
+      .ptz--tr
+        .ptz--td.p10
+          = link_to user, class: 'iblock' do
+            = image_tag comment.avatar_url, class: 'the_comments--userpic w50'
+
+        .ptz--td.p10.vam
+          = link_to user do
+            = comment.header_title
+    - else
+      .ptz--tr
+        .ptz--td.p10
+          | Тема:
+        .ptz--td.p10
+          .fs16.mb10= comment.header_title
+
+    .ptz--tr
+      .ptz--td.p10
+        .b= t('the_comments.commentable')
+      .ptz--td.p10.w100p
+        span.mr15.u
+          = comment.commentable_type
+          |:
+        = link_to comment.commentable_title, [comment.commentable_url, "comment_#{ comment.anchor }"].join('#')
+        '
+        | (#{ comment.try(:commentable_state) })
+
+    .ptz--tr
+      .ptz--td.p10
+        b= t('the_comments.title')
+      .ptz--td.p10
+        - if comment.try(:user)
+          = link_to comment.user_name, comment.user
+        - else
+          = comment.header_title
+
+    .ptz--tr
+      .ptz--td.p10
+        b= t('the_comments.contacts')
+      .ptz--td.p10= comment.contacts
+    .ptz--tr
+      .ptz--td.p10
+        b= t('the_comments.content')
+      .ptz--td.p10.vat= raw comment.content
+
+    .ptz--tr
+      .ptz--td.p10.b
+        | Дата:
+      .ptz--td.p10
+        .fs12
+          - date = comment.created_at
+          = raw I18n.l(date, format: raw("%-d %B %Y %H:%M"))

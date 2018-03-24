@@ -1,0 +1,29 @@
+ruby:
+  pub = PubCategoryRel.uncached do
+    PubCategoryRel
+    .where(category: @main_hub)
+    .published
+    .psql_random
+    .includes(:item)
+    .first.item
+  end
+
+.ptz--table.w100p.mb30
+  .ptz--td.w300
+    = link_to pub, class: 'pubs-list-1--img-link' do
+      = image_tag pub.main_image_url(:v500x500), class: 'pubs-list-1--img'
+
+  .ptz--td &nbsp;
+
+  .ptz--td.w300
+    = link_to pub, class: 'pubs-list-1--title mb20 iblock fs18' do
+      = pub.title
+
+    .pubs-list-1--intro.fs14.lh130.mb20.taj
+      - intro = Sanitize.fragment(pub.intro, {}).truncate(300, omission: '...')
+      - if intro.present?
+        = intro
+      - else
+        = Sanitize.fragment(pub.content, {}).truncate(300, omission: '...')
+
+    = link_to 'Подробнее »'.html_safe, pub, class: 'pubs-list-1--more'

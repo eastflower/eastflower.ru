@@ -1,0 +1,33 @@
+Description:
+  TheCommentsAntispamServices: generators will copy files to install TheComments 3.0 into your App
+
+  Usage: [bundle exec] rails g the_comments_antispam_services OPTION_NAME
+
+# MIGRATIONS::
+  > rake the_comments_antispam_services_engine:install:migrations
+
+# This text:
+  > rails g the_comments_antispam_services --help
+
+# Moedels generators:
+  > rails g the_comments_antispam_services models
+
+  This will create:
+    app/models/concerns/the_comments_antispam_services/base.rb
+    app/models/concerns/the_comments_antispam_services/akismet.rb
+    app/models/concerns/the_comments_antispam_services/yandex_cleanweb.rb
+
+# Jobs generators:
+  > rails g the_comments_antispam_services jobs
+
+  This will generate:
+    app/jobs/the_comments_anti_spam_job.rb
+
+# All generators:
+  > rails g the_comments_antispam_services all
+
+  This will create:
+    app/jobs/the_comments_anti_spam_job.rb
+    app/models/concerns/the_comments_antispam_services/base.rb
+    app/models/concerns/the_comments_antispam_services/akismet.rb
+    app/models/concerns/the_comments_antispam_services/yandex_cleanweb.rb

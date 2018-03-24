@@ -1,0 +1,38 @@
+- @hub = @pub_category
+
+- content_for :title do
+  | Редактировать:
+  '
+  = @hub.title
+
+= render template: 'layouts/items/header_footer'
+= render template: 'common/editor/ckeditor'
+
+.m20
+  span.mr20= link_to 'Просмотр раздела', @hub, class: 'ptz--btn ptz--size-14'
+  span.mr20= link_to 'Все разделы', manage_hubs_path, class: 'ptz--btn ptz--size-14'
+
+.m20
+  .mb30.fs22 Редактировать Раздел
+
+  = render partial: 'notifications/form', locals: { object: @hub, format: :json }
+
+  .ptz--tabs(ptz--tabs-scope='pub-edit')
+    .ptz--tabs--holder
+      .ptz--tabs--item.ptz--tabs--active(ptz--tab-id='form') Основные данные
+      .ptz--tabs--item(ptz--tab-id='images') Картинки
+      .ptz--tabs--item(ptz--tab-id='seo') SEO
+    .mt20.mb20
+      .ptz--tabs--content-item.ptz--tabs--active(ptz--tab-content='form')
+        .ptz--theme-0
+          .ma.w1000= render template: 'hubs/edit/form'
+
+      .ptz--tabs--content-item(ptz--tab-content='images')
+        .ptz--theme-0
+          .ma.w1000= render template: 'attached_images/edit/attached_images', locals: { item: @hub }
+
+      .ptz--tabs--content-item(ptz--tab-content='seo')
+        .ptz--theme-0
+          .ma.w1000
+            .mb20= render template: 'hubs/edit/slug'
+            .mb20= render template: 'meta_data/edit/meta_data', locals: { item: @hub }

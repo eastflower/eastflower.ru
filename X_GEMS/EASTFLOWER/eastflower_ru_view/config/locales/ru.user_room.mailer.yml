@@ -1,0 +1,14 @@
+ru:
+  user_room:
+    mailer:
+      mail_registration_request:
+        subject: 'EastFlower.ru | Запрос на регистрацию на сайте'
+      onetime_login_request:
+        subject: 'EastFlower.ru | Одноразовая ссылка для входа на сайт'
+      new_user_created:
+        subject: 'EastFlower.ru | Зарегистрирован новый пользователь'
+      confirmation_instructions:
+        subject: 'EastFlower.ru | Активация учетной записи'
+      reset_password_instructions:
+        subject: 'EastFlower.ru | Сменить пароль'
+

@@ -1,0 +1,32 @@
+ru:
+  app:
+    layout:
+      title: Jeronimo!
+
+  views:
+    pagination:
+      first: Первая
+      last: Последняя
+
+  pubs:
+    Post: Статья
+    Page: Страница
+
+  state:
+    draft: черновик
+    published: опубликовано
+    deleted: удалено
+
+  authenticity_token:
+    invalid:
+      html_request: 'Invalid Authenticity Token. Please try again'
+      xhr_request:  'Invalid Authenticity Token. Please reload the page and try again'
+
+  http_errors:
+    '400': 'Something wrong happened while processing request, please try again later or reload the page'
+    '401': 'You are not authorized to perform this action and will be redirected to the login page in a few seconds'
+    '403': 'You are not authorized to perform this action'
+    '404': "The page doesn't exist"
+    '422': 'Session of this page has expired. Please refresh the page'
+    '500': 'Internal server error occurred. Please try again later or reload this page'
+    other: 'Something wrong happened while processing request, please try again later or reload the page'

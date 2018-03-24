@@ -1,0 +1,46 @@
+Description:
+  TheCommentsBase: generators will copy files to install TheComments 3.0 into your App
+
+  Usage: [bundle exec] rails g the_comments_manager OPTION_NAME
+  Usage: [bundle exec] rails g the_comments_manager:views OPTION_NAME
+
+# MIGRATIONS::
+  > rake the_comments_manager_engine:install:migrations
+
+# This text:
+  > rails g the_comments_manager --help
+
+# Main generators:
+  > rails g the_comments_manager install
+
+  This will create:
+    app/controllers/concerns/the_comments_manager/actions.rb
+
+# Controller generators:
+  > rails g the_comments_manager controllers
+
+  This will create:
+    app/controllers/concerns/the_comments_manager/actions.rb
+
+# Locales generators:
+  > rails g the_comments_manager locales
+
+  This will generate:
+    config/locales/en.the_comments_manager.yml
+    config/locales/ru.the_comments_manager.yml
+
+# All generators:
+  > rails g the_comments_manager all
+
+  This will create:
+    app/models/comment.rb
+    app/controllers/comments_controller.rb
+    config/initializers/the_comments_manager.rb
+    config/locales/en.the_comments_manager.yml
+    config/locales/ru.the_comments_manager.yml
+
+# View Generators:
+  > rails g the_comments_manager:views js
+  > rails g the_comments_manager:views assets
+  > rails g the_comments_manager:views views
+  > rails g the_comments_manager:views all
