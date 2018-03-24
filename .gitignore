@@ -4,9 +4,7 @@ APP.NAME
 config/_CONFIGS/development/**/*
 config/_CONFIGS/production/**/*
 
-config/ENV/development/*.yml
-config/ENV/production/*.yml
-
+config/ENV/**/*.yml
 config/settings/*.yml
 
 # IGNORE APP THEME database configs
