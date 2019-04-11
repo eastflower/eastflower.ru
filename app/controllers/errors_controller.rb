@@ -88,7 +88,7 @@ class ErrorsController < ActionController::Base
         # Because of `rescue_from` Rollbar can't process exceptions automatically
         # There is a way how to build warning message in Rollbar properly
         #
-        Rollbar.warning(exception, 'Invalid Authenticity Token')
+        # Rollbar.warning(exception, 'Invalid Authenticity Token')
 
         json_respond = {
           flash: {
