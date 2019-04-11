@@ -7,7 +7,7 @@ gem 'app_view_engine', path: "X_GEMS/EASTFLOWER/eastflower_ru_view"
 
 # DATABASES
 gem 'pg', '0.18'
-gem 'mysql2', '~> 0.3.18'
+gem 'mysql2', '0.5.2'
 
 # SEARCH
 gem 'thinking-sphinx', '~> 3.1', '>= 3.1.4'
