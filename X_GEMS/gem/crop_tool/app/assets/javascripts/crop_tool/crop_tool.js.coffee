@@ -28,6 +28,8 @@
         .removeAttr('src')
         .attr 'src', @params.source
 
+      false
+
   finish: ->
     do @destroy
     do @hide_canvas
