@@ -63,6 +63,9 @@ gem 'awesome_nested_set',
 gem 'gibbon'
 gem 'actionview-encoded_mail_to'
 
+gem "actionview", ">= 4.2.11.1"
+gem "sprockets", ">= 3.7.2"
+
 # ERRORS PROCESSING
 gem 'rollbar'
 gem 'newrelic_rpm'
