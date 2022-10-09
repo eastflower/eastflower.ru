@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '4.2.11.1'
 
 # APP THEME
 gem 'app_view_engine', path: "X_GEMS/EASTFLOWER/eastflower_ru_view"
@@ -50,14 +50,14 @@ gem 'truncato'
 gem 'slim-rails'
 
 gem 'autoprefixer-rails'
-gem 'compass-rails', github: 'Compass/compass-rails'
+gem 'compass-rails', '3.0.2' # github: 'Compass/compass-rails'
 
 # MODEL
 gem 'acts-as-taggable-on', '~> 3.5'
 
-gem 'awesome_nested_set',
-  github: 'collectiveidea/awesome_nested_set',
-  branch: 'master'
+gem 'awesome_nested_set', '3.1.4'
+#   github: 'collectiveidea/awesome_nested_set',
+#   branch: 'master'
 
 # EMAILs & MAILER
 gem 'gibbon'
@@ -140,7 +140,7 @@ group :development do
   gem 'mailcatcher'
 
   gem 'web-console', '~> 2.0'
-  gem 'seedbank', github: 'james2m/seedbank'
+  # gem 'seedbank', github: 'james2m/seedbank'
 end
 
 group :development, :test do
