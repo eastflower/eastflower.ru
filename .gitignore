@@ -1,5 +1,6 @@
-# IGNORE APP THEME
-APP.NAME
+db/PGSQL
+db/REDIS
+db/SPHINX
 
 config/_CONFIGS/development/**/*
 config/_CONFIGS/production/**/*
@@ -13,8 +14,8 @@ config/settings/*.yml
 /.bundle
 
 # IGNORE THE DEFAULT SQLITE DATABASE.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+db/*.sqlite3
+db/*.sqlite3-journal
 
 # IGNORE ALL LOG FILES AND TEMP FILES.
 /log/*
@@ -51,7 +52,7 @@ config/CONFIGS/**/*.yml
 
 # REDIS
 
-db/REDIS/
+
 config/initializers/_REDIS.rb
 
 # => SIDEKIQ
@@ -60,7 +61,7 @@ config/initializers/_SIDEKIQ.rb
 
 # SPHINX
 
-db/SPHINX/
+
 config/sphinx.conf
 config/*.sphinx.conf
 config/searchd.config
