@@ -49,7 +49,9 @@ services:
     image: iamteacher/eastflower.ru:webapp.arm64
     volumes:
       - ../:/home
-    # depends_on:
-    #   - psql
-    #   - redis
+    ports:
+      - 3000:3000
+    depends_on:
+      - psql
+      - redis
     #   - sphinx

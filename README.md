@@ -66,10 +66,16 @@ docker exec eastflower-psql-1 bash -c "pg_restore -h localhost -d eastflower -U 
 ## 6. Run the project
 
 ```sh
+cd docker
+
+docker compose -f dev.docker-compose.yml up psql redis rails
+```
+
+```sh
 docker exec -ti eastflower-rails-1 /bin/bash
 ```
 
 ```sh
 $ cd home
-$ rails s
+$ rails s -b 0.0.0.0 -p 3000
 ```
