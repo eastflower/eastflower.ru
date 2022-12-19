@@ -1,0 +1,19 @@
+development:
+  host: localhost
+  pool:
+  adapter:  postgresql
+  encoding: unicode
+
+  database: eastflower
+  username: rails
+  password: qwerty
+
+production:
+  host: localhost
+  pool:
+  adapter:  postgresql
+  encoding: unicode
+
+  database: eastflower
+  username: rails
+  password: qwerty

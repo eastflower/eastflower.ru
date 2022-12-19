@@ -2,13 +2,15 @@ db/PGSQL
 db/REDIS
 db/SPHINX
 
+shared
+
+# IGNORE APP THEME database configs
+
 config/_CONFIGS/development/**/*
 config/_CONFIGS/production/**/*
 
 config/ENV/**/*.yml
 config/settings/*.yml
-
-# IGNORE APP THEME database configs
 
 # IGNORE BUNDLER CONFIG.
 /.bundle
@@ -37,12 +39,6 @@ config/environments/*.local.yml
 ####################################
 # LOCAL CONFIGS
 ####################################
-
-# COMMON
-unicorn.rb
-schedule.rb
-config/database.yml
-config/CONFIGS/**/*.yml
 
 # CONFIG FILES
 

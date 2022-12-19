@@ -1,9 +1,9 @@
 #
-# docker-compose -f dev.docker-compose.yml up
-# docker-compose -f dev.docker-compose.yml down
+# docker compose -f dev.docker-compose.yml psql up
+# docker compose -f dev.docker-compose.yml down
 #
-# docker exec -ti docker-rails-1 /bin/bash
-# docker exec -ti docker-psql-1 /bin/bash
+# docker exec -ti eastflower-psql-1 /bin/bash
+# docker exec -ti eastflower-rails-1 /bin/bash
 version: '3.8'
 
 name: eastflower
@@ -29,17 +29,17 @@ services:
       - ../shared:/shared
 
   # docker exec -ti docker-sphinx-1 ash
-  # docker-compose run docker-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf
+  # docker compose run docker-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf
   # port: 36307
-  # sphinx:
-  #   image: macbre/sphinxsearch:3.4.1
-  #   environment:
-  #     - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
-  #   volumes:
-  #     - ../db/SPHINX:/opt/sphinx/index
-  #     - ../config/SPHINX:/opt/sphinx/conf
-  #     - ../shared:/shared
-  #   mem_limit: 512m
+  sphinx:
+    image: macbre/sphinxsearch:3.4.1
+    environment:
+      - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
+    volumes:
+      - ../db/SPHINX:/opt/sphinx/index
+      - ../config/SPHINX:/opt/sphinx/conf
+      - ../shared:/shared
+    mem_limit: 512m
 
   # rails s -p 3000 -b 0.0.0.0
   # port 3000
@@ -51,5 +51,5 @@ services:
       - ../:/home
     depends_on:
       - psql
-      - sphinx
       - redis
+      - sphinx
