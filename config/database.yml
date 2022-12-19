@@ -1,6 +1,6 @@
 development:
-  host: localhost
-  pool:
+  host: psql
+  pool: 5
   adapter:  postgresql
   encoding: unicode
 
@@ -9,8 +9,8 @@ development:
   password: qwerty
 
 production:
-  host: localhost
-  pool:
+  host: psql
+  pool: 5
   adapter:  postgresql
   encoding: unicode
 
