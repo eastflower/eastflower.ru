@@ -46,10 +46,10 @@ services:
   rails:
     tty: true
     stdin_open: true
-    image: iamteacher/opencook.ru:webapp.arm64
+    image: iamteacher/eastflower.ru:webapp.arm64
     volumes:
       - ../:/home
-    depends_on:
-      - psql
-      - redis
-      - sphinx
+    # depends_on:
+    #   - psql
+    #   - redis
+    #   - sphinx

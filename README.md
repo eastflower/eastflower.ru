@@ -62,3 +62,14 @@ docker exec eastflower-psql-1 bash /shared/create_eastflower_db.sh
 ```
 docker exec eastflower-psql-1 bash -c "pg_restore -h localhost -d eastflower -U rails /shared/eastflower.ru.2022_10_09_15_22.pq.sql"
 ```
+
+## 6. Run the project
+
+```sh
+docker exec -ti eastflower-rails-1 /bin/bash
+```
+
+```sh
+$ cd home
+$ rails s
+```

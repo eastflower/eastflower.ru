@@ -10,66 +10,66 @@ gem 'pg', '0.18'
 gem 'mysql2', '0.5.2'
 
 # SEARCH
-gem 'thinking-sphinx', '~> 3.1', '>= 3.1.4'
-gem 'pg_search'
+gem 'thinking-sphinx', '5.4.0'
+gem 'pg_search', '2.1.2'
 
 # WEB SERVER
-gem 'puma'
+gem 'puma', '3.11.2'
 # gem 'unicorn-rails'
 
 # CONFIGURATION
 gem 'config', '1.0.0'
 
 # DELAYED JOBS
-gem 'sidekiq'
-gem 'sidekiq-limit_fetch'
+gem 'sidekiq', '5.1.1'
+gem 'sidekiq-limit_fetch', '3.4.0'
 
-gem 'redis-namespace'
-gem 'sinatra', require: nil
+gem 'redis-namespace', '1.6.0'
+gem 'sinatra', '1.4.8', require: nil
 
 # CRON TASKS
-gem 'whenever'
+gem 'whenever', '0.10.0'
 
 # VIEW
-gem 'sass-rails' #, '~> 5.0'
-gem 'uglifier',     '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'sass-rails', '5.0.7'
+gem 'uglifier',     '4.1.8'
+gem 'coffee-rails', '4.1.1'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '4.3.1'
 gem 'jquery-ui-rails', '5.0.5'
 
-gem 'turbolinks'
+gem 'turbolinks', '5.1.0'
 
 # gem 'turbolinks', '~> 5.0.0.beta2'
 # ^^^ need for debug
 
-gem 'oj'
-gem 'jbuilder', '~> 2.0'
+gem 'oj', '3.5.0'
+gem 'jbuilder', '2.7.0'
 
-gem 'truncato'
-gem 'slim-rails'
+gem 'truncato', '0.7.10'
+gem 'slim-rails', '3.1.3'
 
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '8.2.0'
 gem 'compass-rails', '3.0.2' # github: 'Compass/compass-rails'
 
 # MODEL
-gem 'acts-as-taggable-on', '~> 3.5'
+gem 'acts-as-taggable-on', '3.5.0'
 
 gem 'awesome_nested_set', '3.1.4'
 #   github: 'collectiveidea/awesome_nested_set',
 #   branch: 'master'
 
 # EMAILs & MAILER
-gem 'gibbon'
-gem 'actionview-encoded_mail_to'
+gem 'gibbon', '3.2.0'
+gem 'actionview-encoded_mail_to', '1.0.9'
 
 gem "actionview", ">= 4.2.11.1"
 gem "sprockets", ">= 3.7.2"
 
 # ERRORS PROCESSING
-gem 'rollbar'
-gem 'newrelic_rpm'
-gem 'exception_notification'
+gem 'rollbar', '2.15.5'
+gem 'newrelic_rpm', '4.8.0.341'
+gem 'exception_notification', '4.2.2'
 
 # X_GEMS
 gem 'user_room',  path: './X_GEMS/USER_ROOM'
@@ -132,24 +132,24 @@ gem 'omniauth-odnoklassniki', '0.0.4'
 gem 'omniauth-twitter',       '1.0.1'
 
 group :development do
-  gem 'spring'
-  gem 'ffaker'
+  gem 'spring', '2.0.2'
+  gem 'ffaker', '2.8.1'
 
   # Mailcatchers
-  gem 'letter_opener'
-  gem 'mailcatcher'
+  gem 'letter_opener', '1.6.0'
+  gem 'mailcatcher', '0.6.5'
 
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '2.3.0'
   # gem 'seedbank', github: 'james2m/seedbank'
 end
 
 group :development, :test do
-  gem 'pry'
-  gem 'pry-byebug'
+  gem 'pry', '0.11.3'
+  gem 'pry-byebug', '3.6.0'
 
-  gem 'byebug'
-  gem 'quiet_assets'
+  gem 'byebug', '10.0.1'
+  gem 'quiet_assets', '1.1.0'
 
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'better_errors', '2.4.0'
+  gem 'binding_of_caller', '0.8.0'
 end
