@@ -28,8 +28,8 @@ services:
       - ../db/REDIS:/data
       - ../shared:/shared
 
-  # docker exec -ti docker-sphinx-1 ash
-  # docker compose run docker-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
+  # docker exec -ti eastflower-sphinx-1 ash
+  # docker compose run eastflower-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
   # port: 36307
   sphinx:
     image: macbre/sphinxsearch:3.4.1
@@ -54,4 +54,4 @@ services:
     depends_on:
       - psql
       - redis
-    #   - sphinx
+      - sphinx

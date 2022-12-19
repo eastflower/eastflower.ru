@@ -13,6 +13,8 @@ class PubsSearchController < RailsBlogController
     @bq = params[:bq].to_s.strip
     to_search = ::Riddle::Query.escape @bq
 
+    # ::ThinkingSphinx.search("test", classes: [Post])
+
     # with star
     @blog_items_0 = ::ThinkingSphinx.search(
       to_search,
