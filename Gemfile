@@ -21,7 +21,7 @@ gem 'puma', '3.11.2'
 gem 'config', '1.0.0'
 
 # DELAYED JOBS
-gem 'sidekiq', '5.1.1'
+gem 'sidekiq', '6.0.0.pre1'
 gem 'sidekiq-limit_fetch', '3.4.0'
 
 gem 'redis-namespace', '1.6.0'
