@@ -20,7 +20,7 @@ db/*.sqlite3-journal
 # IGNORE ALL LOG FILES AND TEMP FILES.
 /log/*
 !/log/.keep
-/tmp
+tmp
 
 public/uploads
 public/assets
@@ -49,21 +49,3 @@ config/CONFIGS/**/*.yml
 .rvmrc
 .ruby-gemset
 .ruby-version
-
-# REDIS
-
-
-config/initializers/_REDIS.rb
-
-# => SIDEKIQ
-
-config/initializers/_SIDEKIQ.rb
-
-# SPHINX
-
-
-config/sphinx.conf
-config/*.sphinx.conf
-config/searchd.config
-config/thinking_sphinx.yml
-config/DEV_ENV_MAC/searchd.config
