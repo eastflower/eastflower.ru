@@ -1,11 +1,18 @@
+# OS FILES
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+# APP
 db/PGSQL
 db/REDIS
 db/SPHINX
 
+tmp
+log
 shared
 
 # IGNORE APP THEME database configs
-
 config/_CONFIGS/development/**/*
 config/_CONFIGS/production/**/*
 
@@ -13,35 +20,21 @@ config/ENV/**/*.yml
 config/settings/*.yml
 
 # IGNORE BUNDLER CONFIG.
-/.bundle
+.bundle
 
 # IGNORE THE DEFAULT SQLITE DATABASE.
 db/*.sqlite3
 db/*.sqlite3-journal
 
 # IGNORE ALL LOG FILES AND TEMP FILES.
-/log/*
-!/log/.keep
-tmp
-
 public/uploads
 public/assets
-
-# OS FILES
-.DS_Store
-.DS_Store?
-Thumbs.db
 
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 
-####################################
-# LOCAL CONFIGS
-####################################
-
 # CONFIG FILES
-
 .rvmrc
 .ruby-gemset
 .ruby-version

@@ -62,18 +62,19 @@ docker exec eastflower-psql-1 bash /shared/create_eastflower_db.sh
 ```
 docker exec eastflower-psql-1 bash -c "pg_restore -h localhost -d eastflower -U rails /shared/eastflower.ru.2022_10_09_15_22.pq.sql"
 ```
-
-## 6. Run the project
+## 6. Create Search Index
 
 ```sh
 cd docker
 
-docker compose -f dev.docker-compose.yml up psql redis rails
+docker compose -f dev.docker-compose.yml up
 ```
 
 ```sh
 docker exec -ti eastflower-rails-1 /bin/bash
 ```
+
+## 6. Run the project
 
 ```sh
 $ cd home
