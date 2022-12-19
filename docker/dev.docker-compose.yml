@@ -29,7 +29,7 @@ services:
       - ../shared:/shared
 
   # docker exec -ti docker-sphinx-1 ash
-  # docker compose run docker-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf
+  # docker compose run docker-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
   # port: 36307
   sphinx:
     image: macbre/sphinxsearch:3.4.1
@@ -37,7 +37,7 @@ services:
       - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
     volumes:
       - ../db/SPHINX:/opt/sphinx/index
-      - ../config/SPHINX:/opt/sphinx/conf
+      - ../config/_SPHINX:/opt/sphinx/conf
       - ../shared:/shared
     mem_limit: 512m
 

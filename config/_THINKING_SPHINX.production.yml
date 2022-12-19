@@ -6,7 +6,7 @@ production:
   morphology: 'stem_en, stem_ru'
 
   indices_location:   /opt/sphinx/index
-  configuration_file: <%= Rails.root.to_s %>/config/SPHINX/sphinx.conf
+  configuration_file: <%= Rails.root.to_s %>/config/_SPHINX/sphinx.conf
 
   log:         /shared/searchd.production.log
   query_log:   /shared/searchd.production.query.log
