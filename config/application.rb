@@ -16,7 +16,6 @@ require_relative 'app_errors'
 module HakushuIo
   class Application < Rails::Application
     require_relative 'app_theme/configs'
-    require_relative 'app_theme/databases'
     require_relative 'app_theme/view_paths'
 
     # Custom Errors Handling

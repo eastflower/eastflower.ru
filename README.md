@@ -80,16 +80,24 @@ eastflower-rails-1
 ```
 docker exec eastflower-psql-1 bash -c "pg_restore -h localhost -d eastflower -U rails /shared/eastflower.ru.2022_10_09_15_22.pq.sql"
 ```
+## 5:1. Add `App.yml` config
+
+```sh
+touch config/ENV/production/settings/app.yml
+```
+
+Add production settings.
+
 ## 6. Create Search Index Config
 
 ```sh
-PLATFORM=amd docker compose -f dev.docker-compose.yml up psql rails
+PLATFORM=amd docker compose -f dev.docker-compose.yml up
 ```
 
 ```sh
 !> eastflower-psql-1
-eastflower-redis-1
-eastflower-sphinx-1
+!> eastflower-redis-1
+!> eastflower-sphinx-1
 !> eastflower-rails-1
 ```
 
@@ -99,7 +107,7 @@ docker exec -ti eastflower-rails-1 /bin/bash
 
 ```sh
 $ cd home
-$ rake ts:configure
+$ RAILS_ENV=production rake ts:configure
 ```
 
 ## 7. Make the Search Index
