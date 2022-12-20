@@ -12,10 +12,6 @@ tmp
 log
 shared
 
-# IGNORE APP THEME database configs
-config/_CONFIGS/development/**/*
-config/_CONFIGS/production/**/*
-
 config/ENV/**/*.yml
 config/settings/*.yml
 
