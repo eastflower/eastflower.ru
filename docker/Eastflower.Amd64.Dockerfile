@@ -1,7 +1,6 @@
-# docker build -t iamteacher/eastflower.ru:webapp.arm64 -f Eastflower.Arm64.Dockerfile ../
-# docker push iamteacher/eastflower.ru:webapp.arm64
+# docker build -t iamteacher/eastflower.ru:webapp.amd64 -f Eastflower.Amd64.Dockerfile ../
 
-FROM iamteacher/opencook.ru:webapp.arm64
+FROM iamteacher/opencook.ru:webapp.amd64
 
 # sqlite3 libsqlite3-0 libsqlite3-dev
 RUN apt-get install libsqlite3-dev

@@ -1,6 +1,6 @@
 #
-# docker compose -f dev.docker-compose.yml psql up
-# docker compose -f dev.docker-compose.yml down
+# PLATFORM=amd docker compose -f dev.docker-compose.yml up
+# PLATFORM=amd docker compose -f dev.docker-compose.yml down
 #
 # docker exec -ti eastflower-psql-1 /bin/bash
 # docker exec -ti eastflower-rails-1 /bin/bash
@@ -46,7 +46,7 @@ services:
   rails:
     tty: true
     stdin_open: true
-    image: iamteacher/eastflower.ru:webapp.arm64
+    image: iamteacher/eastflower.ru:webapp.${PLATFORM:-arm}64
     volumes:
       - ../:/home
     ports:
