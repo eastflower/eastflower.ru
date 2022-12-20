@@ -3,6 +3,10 @@
 Personal Culinary Blog of Elena Tsoy.
 # Cold Dev Start
 
+```sh
+PLATFORM=amd docker compose -f dev.docker-compose.yml pull
+```
+
 ## 1. Remove `.gitkeep` file
 
 ```sh
@@ -51,7 +55,7 @@ Be sure that PSQL container is running, or restart it.
 docker ps
 ```
 
-<img src="./docs/docker-ps-1.png" />
+<img src="./readme/docker-ps-1.png" />
 
 ```sh
 !> eastflower-psql-1
@@ -79,7 +83,7 @@ docker exec eastflower-psql-1 bash -c "pg_restore -h localhost -d eastflower -U 
 ## 6. Create Search Index Config
 
 ```sh
-docker compose -f dev.docker-compose.yml up psql rails
+PLATFORM=amd docker compose -f dev.docker-compose.yml up psql rails
 ```
 
 ```sh
@@ -115,7 +119,7 @@ docker compose -f dev.docker-compose.yml up
 docker exec eastflower-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
 ```
 
-## 6. Run the Project
+## 8. Run the Project
 
 ```sh
 docker compose -f dev.docker-compose.yml up
@@ -134,4 +138,22 @@ $ docker exec -ti eastflower-rails-1 /bin/bash
 
 ```sh
 rails s -b 0.0.0.0 -p 3000
+```
+
+## 9. Download uploads
+
+```sh
+rsync -chavzPr rails@eastflower.ru:/home/rails/eastflower.ru/public/uploads .
+
+rsync -chavzPr rails@eastflower.ru:/home/rails/eastflower.ru/public/uploads .
+```
+
+```
+-c     skip based on checksum, not mod-time & size
+-h     output numbers in a human-readable format
+-a     archive mode is -rlptgoD (no -A,-X,-U,-N,-H)
+-v     increase verbosity
+-z     compress file data during the transfer
+-P     keep partially transferred files
+-r     recurse into directories
 ```
