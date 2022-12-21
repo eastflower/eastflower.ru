@@ -165,3 +165,13 @@ rsync -chavzPr rails@eastflower.ru:/home/rails/eastflower.ru/public/uploads .
 -P     keep partially transferred files
 -r     recurse into directories
 ```
+
+## 10. Run `web server`
+
+```sh
+$ docker exec -ti eastflower-rails-1 /bin/bash
+```
+
+```sh
+bundle exec puma -C config/_PUMA.production.rb
+```
