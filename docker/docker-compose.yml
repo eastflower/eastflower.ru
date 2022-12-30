@@ -1,6 +1,6 @@
 #
-# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f docker-compose.yml up
-# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f docker-compose.yml down
+# APP_PORTS=3001:3000 RUN_AS=7777:7777 PLATFORM=amd docker compose -f docker-compose.yml up
+# APP_PORTS=3001:3000 RUN_AS=7777:7777 PLATFORM=amd docker compose -f docker-compose.yml down
 #
 # docker exec -ti eastflower-psql-1 /bin/bash
 # docker exec -ti eastflower-rails-1 /bin/bash
@@ -12,6 +12,7 @@ services:
   # port: 5432
   psql:
     image: postgres:15.1-bullseye
+    user: ${RUN_AS:-root}
     # restart: always
     environment:
       POSTGRES_PASSWORD: qwerty
@@ -24,7 +25,7 @@ services:
   # command: redis-server --save 60 1 --loglevel warning
   redis:
     image: redis:7.0.5-alpine
-    user: ${USER}
+    user: ${RUN_AS:-root}
     volumes:
       - ../db/REDIS:/data
       - ../shared:/shared
@@ -34,7 +35,7 @@ services:
   # docker compose run eastflower-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
   sphinx:
     image: macbre/sphinxsearch:3.4.1
-    user: ${USER}
+    user: ${RUN_AS:-root}
     environment:
       - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
     volumes:
@@ -50,11 +51,11 @@ services:
     tty: true
     stdin_open: true
     image: iamteacher/eastflower.ru:webapp.${PLATFORM:-arm}64
-    user: ${USER}
+    user: ${RUN_AS:-lucky}
     volumes:
       - ../:/home
     ports:
-      - ${APP_PORTS}
+      - ${APP_PORTS:-3000:3001}
     depends_on:
       - psql
       - redis
