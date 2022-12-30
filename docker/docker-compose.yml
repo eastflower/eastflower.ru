@@ -1,6 +1,6 @@
 #
-# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f dev.docker-compose.yml up
-# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f dev.docker-compose.yml down
+# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f docker-compose.yml up
+# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f docker-compose.yml down
 #
 # docker exec -ti eastflower-psql-1 /bin/bash
 # docker exec -ti eastflower-rails-1 /bin/bash
