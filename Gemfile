@@ -121,7 +121,7 @@ gem 'the_comments_manager',
 
 # OAUTH FIXED VERSIONS FOR USER ROOM
 
-gem 'omniauth',        '1.2.2'
+gem 'omniauth',        '1.9.2'
 gem 'omniauth-oauth',  '1.0.1'
 gem 'omniauth-oauth2', '1.2.0'
 
