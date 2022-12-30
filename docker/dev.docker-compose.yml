@@ -1,6 +1,6 @@
 #
-# PLATFORM=amd docker compose -f dev.docker-compose.yml up
-# PLATFORM=amd docker compose -f dev.docker-compose.yml down
+# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f dev.docker-compose.yml up
+# APP_PORTS=3001:3000 USER=7777:7777 PLATFORM=amd docker compose -f dev.docker-compose.yml down
 #
 # docker exec -ti eastflower-psql-1 /bin/bash
 # docker exec -ti eastflower-rails-1 /bin/bash
@@ -24,15 +24,17 @@ services:
   # command: redis-server --save 60 1 --loglevel warning
   redis:
     image: redis:7.0.5-alpine
+    user: ${USER}
     volumes:
       - ../db/REDIS:/data
       - ../shared:/shared
 
+  # port: 36307
   # docker exec -ti eastflower-sphinx-1 ash
   # docker compose run eastflower-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
-  # port: 36307
   sphinx:
     image: macbre/sphinxsearch:3.4.1
+    user: ${USER}
     environment:
       - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
     volumes:
@@ -41,16 +43,18 @@ services:
       - ../shared:/shared
     mem_limit: 512m
 
-  # rails s -p 3000 -b 0.0.0.0
   # port 3000
+  # bundle exec puma -C config/_PUMA.production.rb
+  # bundle exec rails s -b 0.0.0.0 -p 3000
   rails:
     tty: true
     stdin_open: true
     image: iamteacher/eastflower.ru:webapp.${PLATFORM:-arm}64
+    user: ${USER}
     volumes:
       - ../:/home
     ports:
-      - 3001:3000
+      - ${APP_PORTS}
     depends_on:
       - psql
       - redis
