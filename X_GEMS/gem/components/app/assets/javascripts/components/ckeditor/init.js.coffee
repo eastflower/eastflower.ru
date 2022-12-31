@@ -1,6 +1,7 @@
 @CkeditorOnPage = do ->
   init: ->
     log 'Ckeditor Initializer'
+    log 'Ckeditor Initializer TEST'
     try
       CkeditorOnPage.editors_setup()
     catch e

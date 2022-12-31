@@ -7,7 +7,7 @@
       = hidden_field_tag 'storage_id',   storage.to_param
       = hidden_field_tag 'storage_type', storage.class
 
-      .ptz--table.mb30
+      .ptz--table.mb30.hidden
         .ptz--tr
           .ptz--td.vam.pr15
             = file_field_tag 'files[]', class: 'ptz--input test_multi', multiple: true, autocomplete: :off, data: { role: 'the-storages--multiple-upload-input' }

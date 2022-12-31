@@ -1,5 +1,6 @@
 @TheStoragesFileUploader = do ->
   init: ->
+    log 'HELLO IT IS ME'
     @inited ||= do ->
       $(document).on 'ajax:success', '.the-storages--delete-attachment', (xhr, data, status) ->
         JODY.processor(data)
