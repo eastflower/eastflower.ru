@@ -36,7 +36,7 @@ gem 'uglifier',     '4.1.8'
 gem 'coffee-rails', '4.1.1'
 
 gem 'jquery-rails', '4.3.1'
-gem 'jquery-ui-rails', '5.0.5'
+gem 'jquery-ui-rails', '6.0.1'
 
 gem 'turbolinks', '5.1.0'
 
